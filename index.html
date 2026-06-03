@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luka Zivaljevic</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080810;
+      --surface: #0f0f1a;
+      --accent: #7c6cfc;
+      --accent2: #e05cff;
+      --text: #e8e8f0;
+      --muted: #7070a0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(124,108,252,0.12);
+      background: rgba(8,8,16,0.7);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    /* radial glow blobs */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(124,108,252,0.18) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -55%);
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 400px; height: 400px;
+      background: rgba(124,108,252,0.15);
+      top: -100px; right: -80px;
+    }
+    .blob-2 {
+      width: 350px; height: 350px;
+      background: rgba(224,92,255,0.12);
+      bottom: -60px; left: -60px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(124,108,252,0.35);
+      background: rgba(124,108,252,0.08);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin-top: 1.5rem;
+      max-width: 560px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 0 30px rgba(124,108,252,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 45px rgba(124,108,252,0.5);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-ghost:hover {
+      border-color: rgba(124,108,252,0.5);
+      background: rgba(124,108,252,0.08);
+    }
+
+    /* ── STATS ROW ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: var(--surface);
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: 0.05em; }
+
+    /* ── FEATURES ── */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.7;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(124,108,252,0.35);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(124,108,252,0.2), rgba(224,92,255,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .card p  { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      counter-reset: step;
+    }
+
+    .step { text-align: center; }
+    .step-num {
+      counter-increment: step;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 2px solid rgba(124,108,252,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step p  { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 1.8rem;
+    }
+
+    .stars { color: #f5c518; font-size: 0.9rem; margin-bottom: 1rem; }
+    .testimonial blockquote { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.2rem; }
+    .author { display: flex; align-items: center; gap: 0.75rem; }
+    .avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700; color: #fff;
+    }
+    .author-name { font-size: 0.88rem; font-weight: 600; }
+    .author-role { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      margin: 0 2rem 6rem;
+      background: linear-gradient(135deg, rgba(124,108,252,0.15), rgba(224,92,255,0.1));
+      border: 1px solid rgba(124,108,252,0.25);
+      border-radius: 24px;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,108,252,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .cta-banner p { color: var(--muted); margin-bottom: 2rem; position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .stats { gap: 2rem; flex-wrap: wrap; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="logo">LZ ✦</span>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="#cta" class="btn btn-primary" style="padding:0.55rem 1.3rem;font-size:0.85rem;">Get started</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="tag">✦ Now in public beta</div>
+    <h1>Build something <span class="gradient-text">remarkable</span></h1>
+    <p>The fastest way to go from idea to live product. Everything you need — design, code, deploy — in one seamless workflow.</p>
+
+    <div class="cta-group">
+      <a href="#cta" class="btn btn-primary">Start for free →</a>
+      <a href="#how" class="btn btn-ghost">See how it works</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">10k+</div>
+      <div class="stat-label">Active users</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">99.9%</div>
+      <div class="stat-label">Uptime</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">Average rating</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">&lt; 50ms</div>
+      <div class="stat-label">Response time</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything you need, nothing you don't</h2>
+    <p class="section-sub">Powerful tools designed to remove friction and let you focus on what actually matters.</p>
+
+    <div class="features-grid">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Blazing fast</h3>
+        <p>Zero cold starts, global edge network, and optimised pipelines that keep every interaction snappy.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>Secure by default</h3>
+        <p>End-to-end encryption, SOC 2 Type II compliance, and automated vulnerability scanning built in.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>Integrates with anything</h3>
+        <p>REST, GraphQL, and webhooks connect your stack in minutes — no glue code required.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Real-time analytics</h3>
+        <p>Live dashboards show you exactly what's happening so you can make data-backed decisions fast.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>AI-powered</h3>
+        <p>Smart suggestions, automated workflows, and intelligent routing that learns from your usage.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Global scale</h3>
+        <p>Deploy to 40+ regions instantly. Handle millions of requests without touching a config file.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how" style="background:none;">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">Up and running in minutes</h2>
+    <p class="section-sub">A simple three-step process designed to get you from zero to production as fast as possible.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Connect your project</h3>
+        <p>Link your repo or start from one of our templates. No configuration files to wrestle with.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Customise & build</h3>
+        <p>Use the visual editor or write code directly. Real-time preview updates as you work.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Ship with confidence</h3>
+        <p>One click deploys globally, with automatic rollbacks if anything looks wrong.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Grow & iterate</h3>
+        <p>Monitor, analyse, and improve continuously — all from a single dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="reviews">
+    <div class="section-label">Testimonials</div>
+    <h2 class="section-title">Loved by builders worldwide</h2>
+    <p class="section-sub">Don't take our word for it — here's what people are saying.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Switched our whole team over in a weekend. The DX is miles ahead of anything we've tried before."</blockquote>
+        <div class="author">
+          <div class="avatar">AK</div>
+          <div>
+            <div class="author-name">Alex K.</div>
+            <div class="author-role">CTO, Nexus Labs</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Deployment used to take us hours. Now it's under two minutes. Genuinely life-changing for our cadence."</blockquote>
+        <div class="author">
+          <div class="avatar">SR</div>
+          <div>
+            <div class="author-name">Sofia R.</div>
+            <div class="author-role">Lead Engineer, Prism</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The analytics alone are worth it. Finally understanding our users without a data science team."</blockquote>
+        <div class="author">
+          <div class="avatar">MT</div>
+          <div>
+            <div class="author-name">Marcus T.</div>
+            <div class="author-role">Founder, Flowstate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner" id="cta">
+    <h2>Ready to <span class="gradient-text">ship faster?</span></h2>
+    <p>Join thousands of builders already using the platform. Free to start, no credit card required.</p>
+    <a href="#" class="btn btn-primary">Get started for free →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="logo">LZ ✦</span>
+    <span>© 2026 Luka Zivaljevic. All rights reserved.</span>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>
