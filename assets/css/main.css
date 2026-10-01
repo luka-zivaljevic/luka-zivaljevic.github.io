@@ -95,6 +95,10 @@ section { padding-block: clamp(72px, 10vw, 128px); }
   background: linear-gradient(105deg, var(--violet-soft) 0%, var(--amber) 55%, var(--lime-bright) 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
+.hero h1 .grad-cherry {
+  background: linear-gradient(105deg, #FF7D8E 0%, var(--cherry) 42%, var(--cherry-mid) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .hero .lede { margin-top: 22px; max-width: 54ch; color: var(--text-dim); font-size: 1.05rem; }
 .hero .lede strong { color: var(--text); font-weight: 500; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
