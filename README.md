@@ -1,9 +1,9 @@
-# Luka Zivaljevic — Portfolio
+# Luka Zivaljevic Portfolio
 
 Static site served by GitHub Pages at **https://luka.zivaljevic.net/**
 (repo: `luka-zivaljevic/luka-zivaljevic.github.io`, custom domain pinned by `CNAME`).
 
-No build step, no dependencies — plain HTML/CSS/JS. What is committed is what is served,
+No build step, no dependencies. Plain HTML/CSS/JS. What is committed is what is served,
 so a push to `main` is a deploy.
 
 ## Run it locally
@@ -39,7 +39,7 @@ placeholder, so the grid still looks intentional while it's empty.
 node tools/prerender.mjs
 ```
 
-The site still works if you forget — JavaScript renders the same cards at load time — but a
+The site still works if you forget, since JavaScript renders the same cards at load time, but a
 crawler reading the raw HTML would see an empty projects section. The script writes the cards
 between the `<!-- prerender:start -->` / `<!-- prerender:end -->` markers in `index.html`, from
 the exact same `PROJECTS` array. The card template is duplicated in `tools/prerender.mjs` and
@@ -49,18 +49,18 @@ the exact same `PROJECTS` array. The card template is duplicated in `tools/prere
 
 What's in place:
 
-- **`robots.txt`** — allows everything, points at the sitemap.
-- **`sitemap.xml`** — one URL. Bump `<lastmod>` when the content meaningfully changes.
-- **Canonical URL** — `https://luka.zivaljevic.net/`, so the `github.io` address and the custom
+- **`robots.txt`** allows everything and points at the sitemap.
+- **`sitemap.xml`** has one URL. Bump `<lastmod>` when the content meaningfully changes.
+- **Canonical URL** is `https://luka.zivaljevic.net/`, so the `github.io` address and the custom
   domain don't compete as duplicates.
-- **Structured data** — JSON-LD `@graph` with `WebSite`, `ProfilePage`, and `Person` (education,
+- **Structured data**: JSON-LD `@graph` with `WebSite`, `ProfilePage`, and `Person` (education,
   skills, `sameAs` → GitHub). Test it at <https://search.google.com/test/rich-results>.
-- **Open Graph + Twitter cards** — with `assets/img/og-image.png` (1200×630), generated to match
+- **Open Graph + Twitter cards** use `assets/img/og-image.png` (1200×630), generated to match
   the site's palette. This is what renders when the link is pasted into a message or a post.
-- **Pre-rendered project cards** — see the section above. The main content is in the HTML.
-- **Progressive enhancement** — the scroll-fade is scoped behind `<html class="js">`, so content
+- **Pre-rendered project cards**: see the section above. The main content is in the HTML.
+- **Progressive enhancement**: the scroll-fade is scoped behind `<html class="js">`, so content
   is never sitting at `opacity: 0` for a crawler or a visitor without JavaScript.
-- **`404.html`** — GitHub Pages serves it automatically; marked `noindex, follow`.
+- **`404.html`** is served automatically by GitHub Pages and marked `noindex, follow`.
 - **Deferred scripts** and a single stylesheet, to keep first paint fast.
 
 ### After you deploy
@@ -69,16 +69,16 @@ What's in place:
    verify it (DNS TXT record on `zivaljevic.net`, or the HTML-file method).
 2. Submit `https://luka.zivaljevic.net/sitemap.xml` there.
 3. Use **URL Inspection → Request indexing** for the homepage. Indexing a brand-new domain takes
-   days to weeks — nothing is wrong if it doesn't appear immediately.
+   days to weeks. Nothing is wrong if it doesn't appear immediately.
 4. Check the rendered-HTML tab in URL Inspection to confirm Google sees the project cards.
 
 The strongest remaining lever isn't technical: a page ranks for `"Luka Zivaljevic"` much faster
-once other pages Google already trusts link to it — a GitHub profile README, a LinkedIn profile,
-a university page.
+once other pages Google already trusts link to it, such as a GitHub profile README, a LinkedIn
+profile, or a university page.
 
 ## Color palette
 
-Sampled from the editor screenshot. All tokens live in `assets/css/theme.css` — change them
+Sampled from the editor screenshot. All tokens live in `assets/css/theme.css`. Change them
 there and the whole site follows.
 
 | Token | Hex | Where it came from |
@@ -97,7 +97,7 @@ there and the whole site follows.
 | `--azure` | `#4885CA` | class strings |
 | `--text` | `#EDE7F5` | body text |
 
-## Contact information — deliberately absent
+## Contact information is deliberately absent
 
 There is **no email address, phone number, or other direct contact detail anywhere in this
 repo**, by design. The résumé PDF was also removed from `assets/`, because its header carries
@@ -109,14 +109,14 @@ backend, an obfuscated/JS-assembled address, or a throwaway forwarding alias). D
 
 ## Still to fill in
 
-- Real GitHub + LinkedIn URLs — search for `TODO` in `index.html` (contact section).
+- Real GitHub + LinkedIn URLs: search for `TODO` in `index.html` (contact section).
 - Project screenshots in `assets/img/`.
 - Replace the placeholder blurbs in `assets/js/projects.js` as each project ships.
 - A contact route, once the obfuscation question above is settled.
 
 ## Deploying
 
-Pushing `main` publishes the site — there is no staging step, so preview locally first.
+Pushing `main` publishes the site. There is no staging step, so preview locally first.
 
 ```
 git add -A
@@ -126,11 +126,11 @@ git push
 
 Two files must survive any reorganisation:
 
-- `CNAME` — holds `luka.zivaljevic.net`. Delete it and the custom domain drops.
-- `.nojekyll` — stops Jekyll from ignoring the `assets/` folder.
+- `CNAME` holds `luka.zivaljevic.net`. Delete it and the custom domain drops.
+- `.nojekyll` stops Jekyll from ignoring the `assets/` folder.
 
 **This repo is public.** Anything committed here is world-readable and permanent in the git
-history, even if a later commit removes it — which is the reason for the contact-information
+history, even if a later commit removes it. That is the reason for the contact-information
 rule above.
 
 ## Interactive background
@@ -147,7 +147,7 @@ All tuning lives in the `CFG` object at the top of that file:
 | `speed` | drift speed, px per frame |
 | `linkDist` | how close two nodes must be to draw a line |
 | `mouseDist` / `mousePush` | cursor web reach / repel radius |
-| `palette` | node colors — same RGB values as `theme.css` |
+| `palette` | node colors, same RGB values as `theme.css` |
 | `linkAlpha` / `mouseAlpha` / `nodeAlpha` | opacity of lines and dots |
 
 It pauses when the tab is hidden, ignores touch input so mobile scrolling stays smooth, and

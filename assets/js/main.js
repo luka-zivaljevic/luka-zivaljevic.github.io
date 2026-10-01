@@ -16,7 +16,7 @@
 
     const media = p.image
       ? `<img src="${p.image}" alt="${p.title} screenshot" loading="lazy">`
-      : `<span class="slot">screenshot slot — empty</span>`;
+      : `<span class="slot">screenshot slot (empty)</span>`;
 
     const links = (p.links || [])
       .map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.label} ↗</a>`)

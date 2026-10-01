@@ -2,5 +2,5 @@
 User-agent: *
 Allow: /
 
-# No crawl traps here — the whole site is one page plus static assets.
+# No crawl traps here. The whole site is one page plus static assets.
 Sitemap: https://luka.zivaljevic.net/sitemap.xml

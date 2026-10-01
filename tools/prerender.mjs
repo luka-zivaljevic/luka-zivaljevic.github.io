@@ -7,8 +7,8 @@
 
        node tools/prerender.mjs
 
-   The markup below must match the `card()` template in assets/js/main.js —
-   if you change one, change the other. `npm test` equivalent: load the page
+   The markup below must match the `card()` template in assets/js/main.js.
+   If you change one, change the other. `npm test` equivalent: load the page
    and compare the grid's innerHTML before and after main.js runs.
    ========================================================================= */
 import { readFileSync, writeFileSync } from "node:fs";
@@ -17,7 +17,7 @@ import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-// Evaluate projects.js in place — it is a plain `const PROJECTS = [...]`.
+// Evaluate projects.js in place. It is a plain `const PROJECTS = [...]`.
 const src = readFileSync(join(root, "assets/js/projects.js"), "utf8");
 const PROJECTS = new Function(`${src}; return PROJECTS;`)();
 
@@ -28,7 +28,7 @@ const esc = (v) => String(v)
 function card(p) {
   const media = p.image
     ? `<img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy">`
-    : `<span class="slot">screenshot slot — empty</span>`;
+    : `<span class="slot">screenshot slot (empty)</span>`;
   const links = (p.links || [])
     .map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
     .join("");

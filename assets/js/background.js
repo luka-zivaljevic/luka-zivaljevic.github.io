@@ -1,7 +1,7 @@
 /* ============================================================================
    Interactive vector-point background.
    Drifting nodes, lines between near neighbours, and the cursor pulling its
-   own web. Pure canvas — no library, no build step.
+   own web. Pure canvas, no library, no build step.
 
    Tuning knobs are all in CFG below.
    ========================================================================= */
@@ -19,9 +19,9 @@
     maxNodes:    170,
     minNodes:    45,
     speed:       0.22,     // px per frame
-    linkDist:    140,      // px — node↔node line cutoff
-    mouseDist:   190,      // px — cursor↔node line cutoff
-    mousePush:   58,       // px — cursor repel radius
+    linkDist:    140,      // px, node↔node line cutoff
+    mouseDist:   190,      // px, cursor↔node line cutoff
+    mousePush:   58,       // px, cursor repel radius
     nodeRadius:  [1.1, 2.3],
     lineWidth:   0.7,
     // Palette (theme.css): violet, amber, lime, azure

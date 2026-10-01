@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Palette — sampled directly from the editor screenshot.
+   Palette, sampled directly from the editor screenshot.
    Hex values below are the dominant / peak-saturation colors found in it.
    ========================================================================== */
 :root {
-  /* Surfaces — from the terminal background + the purple selection band */
+  /* Surfaces, from the terminal background + the purple selection band */
   --void:        #000000;  /* editor background            */
   --surface:     #0E011D;  /* selection band, darkest step  */
   --surface-2:   #170131;  /* selection band, peak          */
@@ -11,7 +11,7 @@
   --line:        #2C1055;  /* hairline borders              */
   --line-soft:   #1A0733;
 
-  /* Accents — syntax colors, in the order they appear in the screenshot */
+  /* Accents: syntax colors, in the order they appear in the screenshot */
   --violet:      #7A1FE0;  /* `import` / `from` keywords    */
   --violet-soft: #A855F7;
   --amber:       #E79836;  /* html / head / meta tags       */
@@ -26,7 +26,7 @@
   --text-dim:    #A99CC0;
   --text-faint:  #6E6285;
 
-  /* Semantic aliases — change these, and the whole site follows */
+  /* Semantic aliases. Change these, and the whole site follows */
   --bg:          var(--void);
   --accent:      var(--violet);
   --accent-2:    var(--amber);
