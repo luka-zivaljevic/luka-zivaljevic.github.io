@@ -33,6 +33,49 @@ refresh the page. The tag filter chips build themselves from whatever tags you u
 Drop screenshots in `assets/img/`. A card with `image: ""` renders a dashed "screenshot slot"
 placeholder, so the grid still looks intentional while it's empty.
 
+**Then run this** so the cards exist in the HTML for search engines:
+
+```
+node tools/prerender.mjs
+```
+
+The site still works if you forget — JavaScript renders the same cards at load time — but a
+crawler reading the raw HTML would see an empty projects section. The script writes the cards
+between the `<!-- prerender:start -->` / `<!-- prerender:end -->` markers in `index.html`, from
+the exact same `PROJECTS` array. The card template is duplicated in `tools/prerender.mjs` and
+`assets/js/main.js`; if you change one, change the other.
+
+## Search engine optimization
+
+What's in place:
+
+- **`robots.txt`** — allows everything, points at the sitemap.
+- **`sitemap.xml`** — one URL. Bump `<lastmod>` when the content meaningfully changes.
+- **Canonical URL** — `https://luka.zivaljevic.net/`, so the `github.io` address and the custom
+  domain don't compete as duplicates.
+- **Structured data** — JSON-LD `@graph` with `WebSite`, `ProfilePage`, and `Person` (education,
+  skills, `sameAs` → GitHub). Test it at <https://search.google.com/test/rich-results>.
+- **Open Graph + Twitter cards** — with `assets/img/og-image.png` (1200×630), generated to match
+  the site's palette. This is what renders when the link is pasted into a message or a post.
+- **Pre-rendered project cards** — see the section above. The main content is in the HTML.
+- **Progressive enhancement** — the scroll-fade is scoped behind `<html class="js">`, so content
+  is never sitting at `opacity: 0` for a crawler or a visitor without JavaScript.
+- **`404.html`** — GitHub Pages serves it automatically; marked `noindex, follow`.
+- **Deferred scripts** and a single stylesheet, to keep first paint fast.
+
+### After you deploy
+
+1. Add the property in [Google Search Console](https://search.google.com/search-console) and
+   verify it (DNS TXT record on `zivaljevic.net`, or the HTML-file method).
+2. Submit `https://luka.zivaljevic.net/sitemap.xml` there.
+3. Use **URL Inspection → Request indexing** for the homepage. Indexing a brand-new domain takes
+   days to weeks — nothing is wrong if it doesn't appear immediately.
+4. Check the rendered-HTML tab in URL Inspection to confirm Google sees the project cards.
+
+The strongest remaining lever isn't technical: a page ranks for `"Luka Zivaljevic"` much faster
+once other pages Google already trusts link to it — a GitHub profile README, a LinkedIn profile,
+a university page.
+
 ## Color palette
 
 Sampled from the editor screenshot. All tokens live in `assets/css/theme.css` — change them

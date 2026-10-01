@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found — Luka Zivaljevic</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <style>
+    .nf { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 24px; }
+    .nf .code { font-family: var(--font-mono); font-size: clamp(3.5rem, 14vw, 7rem); line-height: 1;
+                background: linear-gradient(105deg, var(--violet-soft), var(--amber) 60%, var(--lime-bright));
+                -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .nf h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 600; margin-top: 18px; letter-spacing: -.02em; }
+    .nf p { color: var(--text-dim); margin-top: 12px; max-width: 46ch; }
+    .nf .btn { margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <main class="nf">
+    <div>
+      <div class="code">404</div>
+      <h1>This page doesn't exist.</h1>
+      <p>The link may be out of date, or the project it pointed to hasn't been published yet.</p>
+      <a class="btn btn-primary" href="/">Back to the portfolio</a>
+    </div>
+  </main>
+  <script>document.documentElement.classList.add("js");</script>
+  <script defer src="/assets/js/background.js"></script>
+</body>
+</html>

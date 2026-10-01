@@ -232,9 +232,13 @@ section { padding-block: clamp(72px, 10vw, 128px); }
 footer { border-top: 1px solid var(--line-soft); padding-block: 28px; }
 .foot { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-family: var(--font-mono); font-size: .76rem; color: var(--text-faint); }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
+/* ---------- Reveal on scroll ----------
+   Scoped to .js on purpose: without JavaScript every .reveal element stays
+   fully visible, so the pre-rendered project cards are never hidden from a
+   crawler or a no-JS visitor. The <html class="js"> flag is set inline in the
+   document head before any paint. */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.js .reveal.in { opacity: 1; transform: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
@@ -252,5 +256,5 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 28px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }

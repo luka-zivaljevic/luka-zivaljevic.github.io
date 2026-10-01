@@ -9,24 +9,67 @@
   <meta name="theme-color" content="#000000" />
   <meta name="author" content="Luka Zivaljevic" />
   <link rel="canonical" href="https://luka.zivaljevic.net/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Luka Zivaljevic" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://luka.zivaljevic.net/" />
   <meta property="og:title" content="Luka Zivaljevic — Industrial Engineering Portfolio" />
-  <meta property="og:description" content="Hardware, applied AI, and CAD projects from a Purdue IE student." />
+  <meta property="og:description" content="Hardware, applied AI, and CAD projects from an Industrial Engineering student at Purdue University." />
+  <meta property="og:image" content="https://luka.zivaljevic.net/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Luka Zivaljevic — Industrial Engineering, Purdue University" />
+
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Luka Zivaljevic — Industrial Engineering Portfolio" />
+  <meta name="twitter:description" content="Hardware, applied AI, and CAD projects from an Industrial Engineering student at Purdue University." />
+  <meta name="twitter:image" content="https://luka.zivaljevic.net/assets/img/og-image.png" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Luka Zivaljevic",
-    "url": "https://luka.zivaljevic.net/",
-    "jobTitle": "Industrial Engineering Student",
-    "description": "Industrial engineering student at Purdue University building hardware, applied AI, and CAD projects.",
-    "affiliation": { "@type": "CollegeOrUniversity", "name": "Purdue University" },
-    "knowsAbout": ["Industrial Engineering", "Systems Engineering", "Optimization",
-                   "Process Improvement", "Automation", "CAD", "Machine Learning"]
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://luka.zivaljevic.net/#website",
+        "url": "https://luka.zivaljevic.net/",
+        "name": "Luka Zivaljevic — Industrial Engineering Portfolio",
+        "inLanguage": "en-US",
+        "publisher": { "@id": "https://luka.zivaljevic.net/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://luka.zivaljevic.net/#profilepage",
+        "url": "https://luka.zivaljevic.net/",
+        "name": "Luka Zivaljevic — Industrial Engineering Portfolio",
+        "isPartOf": { "@id": "https://luka.zivaljevic.net/#website" },
+        "about": { "@id": "https://luka.zivaljevic.net/#person" },
+        "primaryImageOfPage": "https://luka.zivaljevic.net/assets/img/og-image.png"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://luka.zivaljevic.net/#person",
+        "name": "Luka Zivaljevic",
+        "url": "https://luka.zivaljevic.net/",
+        "image": "https://luka.zivaljevic.net/assets/img/og-image.png",
+        "jobTitle": "Industrial Engineering Student",
+        "description": "Industrial Engineering student at Purdue University building drones, self-hosted AI, and CAD projects, and founder of Zival LLC.",
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Purdue University" },
+          { "@type": "CollegeOrUniversity", "name": "Long Beach City College" }
+        ],
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "Purdue University" },
+        "knowsLanguage": ["English", "Serbian"],
+        "knowsAbout": [
+          "Industrial Engineering", "Operations", "Process Improvement", "Six Sigma",
+          "CAD", "Fusion 360", "3D Printing", "Drones", "Machine Learning",
+          "Computer Vision", "Self-Hosted Language Models", "Python", "Java", "C++"
+        ],
+        "sameAs": ["https://github.com/luka-zivaljevic"]
+      }
+    ]
   }
   </script>
 
@@ -35,6 +78,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- Set before first paint: CSS uses .js to decide whether to animate content in.
+       Without it every section renders visible, which is what crawlers get. -->
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -115,25 +162,122 @@
     </section>
 
     <!-- ===================== PROJECTS ===================== -->
-    <section id="projects">
+    <section id="projects" aria-labelledby="projects-title">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="idx">01</span>
-          <h2>Projects</h2>
+          <h2 id="projects-title">Projects</h2>
           <p>Slots are placeholders for now — each one fills in as the work ships. Add a project by editing one array in <code>assets/js/projects.js</code>.</p>
         </div>
 
         <div class="filters" id="project-filters" role="group" aria-label="Filter projects by tag"></div>
-        <div class="grid" id="project-grid"></div>
+        <div class="grid" id="project-grid"><!-- prerender:start -->
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Zival LLC — ML Learning Boxes</h3>
+            <span class="status" data-status="building">building</span>
+          </div>
+          <p>Placeholder — physical, screen-free puzzle kits that teach kids the vocabulary of machine learning and LLMs. Add the product photos, unit economics, and the first fulfillment run here.</p>
+          <div class="tags"><span class="tag">Startup</span><span class="tag">Product Design</span><span class="tag">Operations</span></div>
+          
+        </div>
+      </article>
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Autonomous Companion Drone</h3>
+            <span class="status" data-status="building">building</span>
+          </div>
+          <p>Placeholder — 3D-printed custom airframe with a companion drone for the Bell Aviation fire-rescue mission. Add the PID/Betaflight tuning notes, sonar hover-hold results, and folding-wing CAD.</p>
+          <div class="tags"><span class="tag">Betaflight</span><span class="tag">PID Tuning</span><span class="tag">CAD</span><span class="tag">Sensors</span></div>
+          
+        </div>
+      </article>
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Smart Barista Machine</h3>
+            <span class="status" data-status="planned">planned</span>
+          </div>
+          <p>Placeholder — fully custom espresso rig with cross-platform control from iOS, Android, and PC. Add the control architecture diagram, firmware notes, and a short demo clip.</p>
+          <div class="tags"><span class="tag">Embedded</span><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">Mechatronics</span></div>
+          
+        </div>
+      </article>
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Image Classification Models</h3>
+            <span class="status" data-status="planned">planned</span>
+          </div>
+          <p>Placeholder — trained computer-vision models to categorize and label image datasets. Add the dataset description, accuracy numbers, and a confusion matrix.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Computer Vision</span><span class="tag">Training</span></div>
+          
+        </div>
+      </article>
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Self-Hosted LLM Stack</h3>
+            <span class="status" data-status="planned">planned</span>
+          </div>
+          <p>Placeholder — open-source Hugging Face models running locally through Ollama and LM Studio, fully independent of cloud inference. Add the hardware, model comparisons, and tokens/sec.</p>
+          <div class="tags"><span class="tag">Ollama</span><span class="tag">LM Studio</span><span class="tag">Hugging Face</span></div>
+          
+        </div>
+      </article>
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>HomeLab Server</h3>
+            <span class="status" data-status="planned">planned</span>
+          </div>
+          <p>Placeholder — Ubuntu running on repurposed iMac hardware for self-hosted applications and storage. Add the service map, storage layout, and uptime notes.</p>
+          <div class="tags"><span class="tag">Ubuntu</span><span class="tag">Linux</span><span class="tag">Self-Hosting</span></div>
+          
+        </div>
+      </article>
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Custom-Built 3D Printer</h3>
+            <span class="status" data-status="planned">planned</span>
+          </div>
+          <p>Placeholder — mechanical components and functional prototypes designed in Fusion 360, including a printer built from scratch. Add renders, the BOM, and print-quality comparisons.</p>
+          <div class="tags"><span class="tag">Fusion 360</span><span class="tag">CAD</span><span class="tag">Fabrication</span></div>
+          
+        </div>
+      </article>
+      <article class="card reveal is-placeholder">
+        <div class="card-media"><span class="slot">screenshot slot — empty</span></div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3>Open Slot</h3>
+            <span class="status" data-status="planned">planned</span>
+          </div>
+          <p>Placeholder — reserved for the next project. Duplicate this block in assets/js/projects.js whenever you start something new.</p>
+          <div class="tags"><span class="tag">TBD</span></div>
+          
+        </div>
+      </article>
+      <!-- prerender:end --></div>
       </div>
     </section>
 
     <!-- ===================== ABOUT ===================== -->
-    <section id="about">
+    <section id="about" aria-labelledby="about-title">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="idx">02</span>
-          <h2>About</h2>
+          <h2 id="about-title">About</h2>
         </div>
 
         <div class="about-grid">
@@ -163,24 +307,24 @@
             <h3>Timeline</h3>
             <ul class="timeline">
               <li>
-                <b>Purdue University</b>
-                <span>2026 – Expected 2028</span>
-                <p>B.S. Industrial Engineering. STAT 350, R, Java, Python, C++.</p>
-              </li>
-              <li>
-                <b>Long Beach City College</b>
-                <span>2025 – 2026</span>
-                <p>Collegiate water polo. 2nd in Regionals, 4th at 3C2A State.</p>
-              </li>
-              <li>
                 <b>Pegasus Aquatics — Assistant Coach</b>
                 <span>Dallas, TX</span>
                 <p>Coached 10-and-under; supported the Junior Olympic 14U team.</p>
               </li>
               <li>
+                <b>Long Beach City College</b>
+                <span>2023 – 2025</span>
+                <p>Collegiate water polo. 2nd in Regionals, 4th at 3C2A State.</p>
+              </li>
+              <li>
                 <b>Forge MakerSpace — Instructor</b>
-                <span>Santa Monica, CA</span>
+                <span>2025 · Santa Monica, CA</span>
                 <p>Taught 3D printing, laser cutting, programming, and robotics.</p>
+              </li>
+              <li>
+                <b>Purdue University</b>
+                <span>2026 – Expected 2028</span>
+                <p>B.S. Industrial Engineering. STAT 350, R, Java, Python, C++.</p>
               </li>
             </ul>
           </aside>
@@ -189,11 +333,11 @@
     </section>
 
     <!-- ===================== SKILLS ===================== -->
-    <section id="skills">
+    <section id="skills" aria-labelledby="skills-title">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="idx">03</span>
-          <h2>Skills</h2>
+          <h2 id="skills-title">Skills</h2>
           <p>Where the projects above come from.</p>
         </div>
 
@@ -238,10 +382,10 @@
     </section>
 
     <!-- ===================== CONTACT ===================== -->
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-title">
       <div class="wrap">
         <div class="contact-card reveal">
-          <h2>Let's build something.</h2>
+          <h2 id="contact-title">Let’s build something.</h2>
           <p>
             I'm looking for an internship in industrial engineering or operations — and I'm always
             happy to talk about drones, local AI, or anything with a 3D printer involved.
@@ -265,8 +409,8 @@
     </div>
   </footer>
 
-  <script src="assets/js/background.js"></script>
-  <script src="assets/js/projects.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/background.js"></script>
+  <script defer src="assets/js/projects.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>
