@@ -109,7 +109,6 @@ backend, an obfuscated/JS-assembled address, or a throwaway forwarding alias). D
 
 ## Still to fill in
 
-- Real GitHub + LinkedIn URLs: search for `TODO` in `index.html` (contact section).
 - Project screenshots in `assets/img/`.
 - Replace the placeholder blurbs in `assets/js/projects.js` as each project ships.
 - A contact route, once the obfuscation question above is settled.
