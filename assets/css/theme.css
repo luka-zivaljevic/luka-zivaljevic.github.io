@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Palette — sampled directly from the editor screenshot.
+   Hex values below are the dominant / peak-saturation colors found in it.
+   ========================================================================== */
+:root {
+  /* Surfaces — from the terminal background + the purple selection band */
+  --void:        #000000;  /* editor background            */
+  --surface:     #0E011D;  /* selection band, darkest step  */
+  --surface-2:   #170131;  /* selection band, peak          */
+  --surface-3:   #22084A;  /* lifted / hover                */
+  --line:        #2C1055;  /* hairline borders              */
+  --line-soft:   #1A0733;
+
+  /* Accents — syntax colors, in the order they appear in the screenshot */
+  --violet:      #7A1FE0;  /* `import` / `from` keywords    */
+  --violet-soft: #A855F7;
+  --amber:       #E79836;  /* html / head / meta tags       */
+  --amber-deep:  #E4762E;
+  --lime:        #4CA62F;  /* attribute names               */
+  --lime-bright: #5ECB3C;
+  --magenta:     #A52173;  /* punctuation / closers         */
+  --azure:       #4885CA;  /* class strings                 */
+
+  /* Type */
+  --text:        #EDE7F5;
+  --text-dim:    #A99CC0;
+  --text-faint:  #6E6285;
+
+  /* Semantic aliases — change these, and the whole site follows */
+  --bg:          var(--void);
+  --accent:      var(--violet);
+  --accent-2:    var(--amber);
+  --accent-3:    var(--lime-bright);
+
+  /* Type scale & rhythm */
+  --font-sans: "Space Grotesk", ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --maxw: 1120px;
+  --gutter: clamp(20px, 5vw, 48px);
+  --radius: 14px;
+  --radius-sm: 8px;
+
+  /* Effects */
+  --glow: 0 0 0 1px var(--line), 0 18px 60px -28px rgba(122, 31, 224, .75);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
